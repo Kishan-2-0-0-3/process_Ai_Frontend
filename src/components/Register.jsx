@@ -1,6 +1,8 @@
 // src/components/Register.jsx
 import React, { useState } from 'react';
 import { registerUser } from '../api';
+import "./Register.css";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -11,10 +13,7 @@ const Register = () => {
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -28,9 +27,9 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="register-container">
+      <form className="register-form" onSubmit={handleSubmit}>
+      <h2>Create your account</h2>
         <input
           type="text"
           name="username"
@@ -59,10 +58,28 @@ const Register = () => {
           <option value="user">User</option>
           <option value="admin">Admin</option>
         </select>
-        <button type="submit">Register</button>
+        <button className="register-btn " type="submit">Register</button>
+
+
+        <div className="google-signup">
+        <button className="google-btn">
+        <FcGoogle />
+          Sign up with Google
+        </button>
+      </div>
+
+
       </form>
     </div>
   );
 };
 
 export default Register;
+
+
+
+
+
+
+
+
